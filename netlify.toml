@@ -1,0 +1,31 @@
+[build]
+  publish = "output"
+  command = "PYTHONPATH=$PYTHONPATH:$(pwd) python ss_script.py"
+
+[build.environment]
+  PYTHON_VERSION = "3.8"
+
+# Ensure proper handling of Python paths
+[context.production]
+  command = "PYTHONPATH=$PYTHONPATH:$(pwd) python ss_script.py"
+
+[context.deploy-preview]
+  command = "PYTHONPATH=$PYTHONPATH:$(pwd) python ss_script.py"
+
+# Build settings
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
